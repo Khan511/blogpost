@@ -2,12 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import "../components/button/Button.css";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  singInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/UserSlice";
 
 const Signin = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
-  const [erroMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+
+  const { loading, error: errorMessage } = useSelector((state) => state.user);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
@@ -16,11 +24,10 @@ const Signin = () => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
-      return setErrorMessage("Please fill out all fields");
+      return dispatch(signInFailure("Please fill out all fields"));
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      dispatch(singInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -29,17 +36,15 @@ const Signin = () => {
 
       const data = await res.json();
       if (data.success === false) {
-        setErrorMessage(data.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
       }
-      setLoading(false);
 
       if (res.ok) {
+        dispatch(signInSuccess(data));
         navigate("/");
       }
     } catch (error) {
-      setErrorMessage(error.message);
-      setLoading(false);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -81,9 +86,9 @@ const Signin = () => {
                 onChange={handleChange}
               />
             </div>
-            {erroMessage && (
+            {errorMessage && (
               <Alert className="mt-5" color="failure">
-                {erroMessage}
+                {errorMessage}
               </Alert>
             )}
 
@@ -114,7 +119,7 @@ const Signin = () => {
                     <span className="pl-3">Loading...</span>
                   </>
                 ) : (
-                  "Sign Un"
+                  "Sign In"
                 )}
               </Button> */}
           </form>

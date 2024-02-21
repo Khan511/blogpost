@@ -24,7 +24,7 @@
   color: black;
 }
 .button:hover {
-  color: black;
+  color: Blue;
 }
 
 .button::after,
@@ -33,12 +33,10 @@
   position: absolute;
   width: 25rem;
   aspect-ratio: 1;
-  background-image: linear-gradient(yellow, blue);
+  background-image: linear-gradient(green, yellow);
   z-index: -1;
   border-radius: 50%;
-  transition:
-    transform 2.5s,
-    background 3s;
+  transition: transform 2.5s;
 }
 .button::before {
   left: 0;
