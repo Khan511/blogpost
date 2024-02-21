@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
+import "../components/button/Button.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ const SignUp = () => {
               <Label value="Your password" />
               <TextInput
                 type="password"
-                placeholder="password"
+                placeholder="**********"
                 id="password"
                 onChange={handleChange}
               />
@@ -94,10 +95,27 @@ const SignUp = () => {
                 {erroMessage}
               </Alert>
             )}
-            <Button
+
+            <button
+              // gradientDuoTone="purpleToPink"
+              type="submit"
+              disabled={loading}
+              className="button"
+            >
+              {loading ? (
+                <>
+                  <Spinner size="sm" />
+                  <p className="pl-3">Loading...</p>
+                </>
+              ) : (
+                "Sign Un"
+              )}
+            </button>
+            {/* <Button
               gradientDuoTone="purpleToPink"
               type="submit"
               disabled={loading}
+              className="button"
             >
               {loading ? (
                 <>
@@ -107,7 +125,7 @@ const SignUp = () => {
               ) : (
                 "Sign Un"
               )}
-            </Button>
+            </Button> */}
           </form>
 
           <div className="mt-2 flex gap-2 text-sm">
