@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import "../components/button/Button.css";
+import OAuth from "../components/oauth/OAuth";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -126,6 +127,7 @@ const SignUp = () => {
                 "Sign Un"
               )}
             </Button> */}
+            <OAuth />
           </form>
 
           <div className="mt-2 flex gap-2 text-sm">

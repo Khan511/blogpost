@@ -3,7 +3,7 @@ import UserReducer from "./user/UserSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 // import persistReducer from "redux-persist/es/persistReducer";
-
+// 03:13:30
 const rootRecucer = combineReducers({
   user: UserReducer,
 });

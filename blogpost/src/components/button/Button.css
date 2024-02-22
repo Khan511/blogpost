@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   border: 1px solid gray;
   border-radius: 0.5rem;
 
@@ -33,7 +33,9 @@
   position: absolute;
   width: 25rem;
   aspect-ratio: 1;
+
   background-image: linear-gradient(green, yellow);
+
   z-index: -1;
   border-radius: 50%;
   transition: transform 2.5s;

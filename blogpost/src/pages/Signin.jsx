@@ -9,6 +9,7 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/UserSlice";
+import OAuth from "../components/oauth/OAuth";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -122,6 +123,7 @@ const Signin = () => {
                   "Sign In"
                 )}
               </Button> */}
+            <OAuth />
           </form>
 
           <div className="mt-2 flex gap-2 text-sm">

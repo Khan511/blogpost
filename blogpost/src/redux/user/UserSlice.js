@@ -16,7 +16,7 @@ const userSlice = createSlice({
 
     signInSuccess: (state, action) => {
       state.curentUser = action.payload;
-      console.log(action.payload);
+
       state.loading = false;
       state.error = null;
     },
