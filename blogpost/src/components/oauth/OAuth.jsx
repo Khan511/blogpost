@@ -7,8 +7,8 @@ import { signInSuccess } from "../../redux/user/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 const OAuth = () => {
-  const navigate = useNavigate();
   const auth = getAuth(app);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleGoogleClick = async () => {
     const provider = new GoogleAuthProvider();

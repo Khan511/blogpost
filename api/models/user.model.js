@@ -16,6 +16,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    profilePicture: {
+      type: String,
+      default:
+        "https://ccbs.uci.edu/wp-content/uploads/sites/3/2022/03/no-user-image-icon-27.png",
+    },
   },
   { timestamps: true }
 );

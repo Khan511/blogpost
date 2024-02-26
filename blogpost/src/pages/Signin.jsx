@@ -5,7 +5,7 @@ import "../components/button/Button.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  singInStart,
+  signInStart,
   signInSuccess,
   signInFailure,
 } from "../redux/user/UserSlice";
@@ -28,7 +28,7 @@ const Signin = () => {
       return dispatch(signInFailure("Please fill out all fields"));
     }
     try {
-      dispatch(singInStart());
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,6 +36,7 @@ const Signin = () => {
       });
 
       const data = await res.json();
+      console.log(data);
       if (data.success === false) {
         dispatch(signInFailure(data.message));
       }
