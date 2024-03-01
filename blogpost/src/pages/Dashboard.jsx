@@ -17,7 +17,7 @@ const Dashboard = () => {
   }, [locaiton.search]);
 
   return (
-    <div className="flex  min-h-screen flex-col md:flex-row">
+    <div className="flex min-h-screen flex-col md:flex-row">
       {/* SideBar */}
       <div className="md:w-56">
         <DashSidebar />
@@ -26,7 +26,7 @@ const Dashboard = () => {
       {/* Profile */}
 
       {tab === "profile" && (
-        <div>
+        <div className="mt-6 w-full">
           <DashProfile />
         </div>
       )}
