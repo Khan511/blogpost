@@ -27,6 +27,7 @@ const DashSidebar = () => {
               labelColor="dark"
               className="cursor-pointer"
               onClick={() => setTab("profile")}
+              as="div"
             >
               Prifile
             </Sidebar.Item>
@@ -37,6 +38,7 @@ const DashSidebar = () => {
               icon={HiArrowSmRight}
               className="cursor-pointer"
               onClick={() => setTab("signout")}
+              as="div"
             >
               Sign Out
             </Sidebar.Item>
