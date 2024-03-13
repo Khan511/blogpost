@@ -3,7 +3,6 @@ import UserReducer from "./user/UserSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import ThemeReducer from "./theme/ThemeSlice";
-// import persistReducer from "redux-persist/es/persistReducer";
 
 const rootRecucer = combineReducers({
   user: UserReducer,

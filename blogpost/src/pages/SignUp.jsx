@@ -7,8 +7,8 @@ import OAuth from "../components/oauth/OAuth";
 const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
-  const [erroMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [erroMessage, setErrorMessage] = useState(null);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };

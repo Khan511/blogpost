@@ -14,7 +14,7 @@ const DashSidebar = () => {
     }
   }, [location.search]);
 
-  console.log(tab);
+
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
