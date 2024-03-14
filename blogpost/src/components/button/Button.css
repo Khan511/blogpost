@@ -1,21 +1,20 @@
 .button {
   all: unset;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 0.4rem 1rem;
-  border: 1px solid gray;
-  border-radius: 0.5rem;
-
-  font-size: 1.2rem;
-  font-weight: 600;
   cursor: pointer;
   overflow: hidden;
+  font-weight: 600;
+  user-select: none;
+  font-size: 1.2rem;
+  position: relative;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  border: 1px solid gray;
   transition:
     border 300ms,
     color 300ms;
-  user-select: none;
 
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }

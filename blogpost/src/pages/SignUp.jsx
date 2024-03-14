@@ -109,7 +109,7 @@ const SignUp = () => {
                   <p className="pl-3">Loading...</p>
                 </>
               ) : (
-                "Sign Un"
+                "Sign Up"
               )}
             </button>
             {/* <Button

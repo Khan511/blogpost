@@ -1,24 +1,29 @@
 import { storage } from "../../firebase";
-import { useDispatch, useSelector } from "react-redux";
-import "react-circular-progressbar/dist/styles.css";
-import { useEffect, useRef, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Alert, Button, TextInput } from "flowbite-react";
+import "react-circular-progressbar/dist/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Alert, Button, Modal, TextInput } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import {
   updateFailure,
   updateStart,
   updateSuccess,
+  deleteUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
 } from "../../redux/user/UserSlice";
-// import { set } from "mongoose";
 
 const DashProfile = () => {
   const dispatch = useDispatch();
   const filePickerRef = useRef();
+
   const [formData, setFormData] = useState({});
   const [imageFile, setImageFile] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [imageUpload, setImageUpload] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const [uploadStatus, setUploadStatus] = useState({
@@ -140,6 +145,29 @@ const DashProfile = () => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    setShowModal(false);
+
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        dispatch(deleteUserFailure(data.message));
+        toast.error(data.message);
+      } else {
+        dispatch(deleteUserSuccess());
+        toast.success("Account deleted successfully");
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+      console.log(error);
+    }
+  };
+
   return (
     <div className="mx-auto w-full max-w-lg  p-3 shadow-md">
       <h1 className="my-7 text-center text-4xl font-semibold">Profile</h1>
@@ -208,9 +236,39 @@ const DashProfile = () => {
         </Button>
       </form>
       <div className="mt-4 flex justify-between text-red-600">
-        <span className="cursor-pointer">Delete Account</span>
+        <span onClick={() => setShowModal(true)} className="cursor-pointer">
+          Delete Account
+        </span>
         <span className="cursor-pointer">Sing Out</span>
       </div>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        popup
+        size="md"
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            <HiOutlineExclamationCircle className="mx-auto mb-3 text-5xl text-red-600" />
+            <h3 className="mb-8 text-xl">
+              Are you sure you want to delete your account?
+            </h3>
+            <div className="flex justify-between">
+              <Button
+                color="failure"
+                className="mr-3"
+                onClick={handleDeleteAccount}
+              >
+                Yes, I'm sure
+              </Button>
+              <Button className="px-7" onClick={() => setShowModal(false)}>
+                No
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       <ToastContainer />
     </div>
   );
