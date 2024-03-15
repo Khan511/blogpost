@@ -15,8 +15,9 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
+  signOutSuccess,
 } from "../../redux/user/UserSlice";
-
+ 
 const DashProfile = () => {
   const dispatch = useDispatch();
   const filePickerRef = useRef();
@@ -168,6 +169,24 @@ const DashProfile = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signOutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="mx-auto w-full max-w-lg  p-3 shadow-md">
       <h1 className="my-7 text-center text-4xl font-semibold">Profile</h1>
@@ -239,7 +258,9 @@ const DashProfile = () => {
         <span onClick={() => setShowModal(true)} className="cursor-pointer">
           Delete Account
         </span>
-        <span className="cursor-pointer">Sing Out</span>
+        <span className="cursor-pointer" onClick={handleSignOut}>
+          Sing Out
+        </span>
       </div>
       <Modal
         show={showModal}
