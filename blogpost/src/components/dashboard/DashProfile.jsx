@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { storage } from "../../firebase";
 import "react-toastify/dist/ReactToastify.css";
 import "react-circular-progressbar/dist/styles.css";
@@ -17,16 +18,15 @@ import {
   deleteUserFailure,
   signOutSuccess,
 } from "../../redux/user/UserSlice";
- 
+
 const DashProfile = () => {
   const dispatch = useDispatch();
   const filePickerRef = useRef();
-
   const [formData, setFormData] = useState({});
   const [imageFile, setImageFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [imageUpload, setImageUpload] = useState(false);
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading } = useSelector((state) => state.user);
   const [uploadStatus, setUploadStatus] = useState({
     progress: null,
     error: null,
@@ -250,9 +250,20 @@ const DashProfile = () => {
           placeholder="Password..."
           onChange={handleChange}
         />
-        <Button className="" type="submit" disabled={imageUpload}>
-          Update
+        <Button className="" type="submit" disabled={imageUpload || loading}>
+          {loading ? "Loading..." : "Update"}
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}>
+            <Button
+              type="button"
+              gradientDuoTone="purpleToPink"
+              className="w-full"
+            >
+              Create a Post
+            </Button>
+          </Link>
+        )}
       </form>
       <div className="mt-4 flex justify-between text-red-600">
         <span onClick={() => setShowModal(true)} className="cursor-pointer">
