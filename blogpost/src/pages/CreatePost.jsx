@@ -2,7 +2,7 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button, FileInput, Select, TextInput } from "flowbite-react";
-
+// 06:01:40
 const CreatePost = () => {
   return (
     <div className="mx-auto min-h-screen max-w-3xl  p-3">
