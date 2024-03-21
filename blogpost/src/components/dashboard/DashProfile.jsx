@@ -22,6 +22,7 @@ import {
 const DashProfile = () => {
   const dispatch = useDispatch();
   const filePickerRef = useRef();
+
   const [formData, setFormData] = useState({});
   const [imageFile, setImageFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
