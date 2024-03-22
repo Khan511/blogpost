@@ -27,6 +27,9 @@ const create = async (req, res, next) => {
     res.status(201).json(savedPost);
   } catch (error) {
     console.log(error);
+
+    next(error);
+    console.log(error);
   }
 };
 
