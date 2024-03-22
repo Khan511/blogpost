@@ -13,7 +13,7 @@ const CreatePost = () => {
   const [formData, setFormData] = useState({});
   const [imageUploadError, setImageUploadError] = useState(null);
   const [imageUploadProgess, setImageUploadProgress] = useState(null);
-  // 06:21:05
+
   const handleUploadImage = async () => {
     try {
       if (!file) {
