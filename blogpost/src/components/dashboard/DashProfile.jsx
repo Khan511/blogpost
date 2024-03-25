@@ -188,6 +188,23 @@ const DashProfile = () => {
     }
   };
 
+  const getAllPosts = async () => {
+    try {
+      const res = await fetch("/api/post/getposts", {
+        method: "GET",
+        headers: { "Conten-Type": "application/json" },
+      });
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllPosts;
+  }, []);
+  
   return (
     <div className="mx-auto w-full max-w-lg  p-3 shadow-md">
       <h1 className="my-7 text-center text-4xl font-semibold">Profile</h1>

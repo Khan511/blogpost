@@ -34,3 +34,7 @@ const create = async (req, res, next) => {
 };
 
 export default create;
+
+export const getPosts = async (req, res, next) => {
+  console.log(req.body);
+};
