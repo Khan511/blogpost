@@ -32,7 +32,7 @@ const Dashboard = () => {
         </div>
       )}
       {tab === "posts" && (
-        <div>
+        <div className="w-full">
           <DashPosts />
         </div>
       )}
