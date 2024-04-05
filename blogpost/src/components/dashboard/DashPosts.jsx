@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+// 07:15
 export const DashPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -97,7 +97,7 @@ export const DashPosts = () => {
             </Table.Head>
             {userPosts &&
               userPosts.map((post) => (
-                <Table.Body className="divide-y">
+                <Table.Body className="divide-y" key={post._id}>
                   <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell>
                       {new Date(post.updatedAt).toLocaleDateString()}

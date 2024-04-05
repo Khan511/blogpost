@@ -10,6 +10,7 @@ import FooterComponent from "./components/Footer";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import AdminProtectedRoute from "./components/adminProtectedRoute/AdminProtectedRoute";
 import CreatePost from "./pages/CreatePost";
+import UpdatePost from "./pages/UpdatePost";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         </Route>
         <Route element={<AdminProtectedRoute />}>
           <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
         <Route path="/projects" element={<Projects />} />
       </Routes>
