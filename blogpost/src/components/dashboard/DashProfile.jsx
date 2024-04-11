@@ -204,16 +204,16 @@ const DashProfile = () => {
   useEffect(() => {
     getAllPosts;
   }, []);
-  
+
   return (
-    <div className="mx-auto w-full max-w-lg  p-3 shadow-md">
+    <div className="mx-auto w-full max-w-lg p-3 shadow-md dark:border dark:border-gray-700">
       <h1 className="my-7 text-center text-4xl font-semibold">Profile</h1>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
           onChange={handleUploadImage}
-          className="rounded-full"
+          className="rounded-full border border-gray-200 dark:border-gray-500"
           ref={filePickerRef}
         />
         <div
