@@ -155,6 +155,7 @@ const CreatePost = () => {
           theme="snow"
           placeholder="Write something..."
           className="mb-12 mt-8 h-72"
+          readOnly={true}
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
