@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button, Spinner } from "flowbite-react";
+import CallToAction from "../components/callToAction/CallToAction";
 // 08:07:40
 const SinglePost = () => {
   const { postSlug } = useParams();
@@ -64,13 +65,21 @@ const SinglePost = () => {
         alt={post && post.title}
         className="mt-3 max-h-[600px] w-full object-cover p-3"
       />
-      <div className="flex justify-between px-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs pb-3">
+      <div className="mx-auto flex w-full max-w-2xl justify-between border-b border-slate-500 px-3 pb-3 text-xs">
         <span className="">
           {post && new Date(post.createdAt).toLocaleDateString()}
         </span>
-        <span className="italic">{post &&(post.content.length /1000).toFixed(2)} mins read</span>
+        <span className="italic">
+          {post && (post.content.length / 1000).toFixed(2)} mins read
+        </span>
       </div>
-   <div className="max-w-2xl mx-auto w-full p-3 post-content" dangerouslySetInnerHTML={{__html: post && post.content}}></div>
+      <div
+        className="post-content mx-auto w-full max-w-2xl p-3"
+        dangerouslySetInnerHTML={{ __html: post && post.content }}
+      ></div>
+      <div className="mx-auto w-full max-w-4xl">
+        <CallToAction />
+      </div>
     </main>
   );
 };
