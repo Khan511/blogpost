@@ -3,7 +3,7 @@ import React from "react";
 
 const CallToAction = () => {
   return (
-    <div className=" flex  flex-col  rounded-br-3xl rounded-tl-3xl border border-8 border-teal-500 p-4 sm:flex-row">
+    <div className=" flex  flex-col  rounded-br-3xl rounded-tl-3xl border-4 border-teal-500 p-4 sm:flex-row">
       <div className=" flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
         <h2>Want to see my Portfolio webSite?</h2>
         <p>You can checout the projects i made</p>

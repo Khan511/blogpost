@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button, Spinner } from "flowbite-react";
 import CallToAction from "../components/callToAction/CallToAction";
+import CommentSections from "../components/commentSection/CommentSections";
 // 08:07:40
 const SinglePost = () => {
   const { postSlug } = useParams();
@@ -16,7 +17,6 @@ const SinglePost = () => {
         const res = await fetch(`/api/post/getposts?slug=${postSlug}`);
 
         const data = await res.json();
-        console.log(data);
 
         if (!res.ok) {
           setError(true);
@@ -44,8 +44,6 @@ const SinglePost = () => {
         <Spinner size="xl" className="text-4xl" />
       </div>
     );
-
-  console.log(post);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-6xl flex-col  p-3">
@@ -79,6 +77,9 @@ const SinglePost = () => {
       ></div>
       <div className="mx-auto w-full max-w-4xl">
         <CallToAction />
+      </div>
+      <div className="mx-auto w-full max-w-4xl">
+        <CommentSections postId={post._id} />
       </div>
     </main>
   );

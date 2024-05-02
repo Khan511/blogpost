@@ -5,6 +5,7 @@ import UserRoutes from "./routes/user.route.js";
 import AuthRoutes from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import postRoute from "../api/routes/post.route.js";
+import CommentRoute from "../api/routes/comment.route.js";
 dotenv.config();
 
 mongoose
@@ -28,6 +29,7 @@ app.listen(3000, () => {
 
 app.use("/api/user", UserRoutes);
 app.use("/api/auth", AuthRoutes);
+app.use("/api/comment", CommentRoute);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
