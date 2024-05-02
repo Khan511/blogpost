@@ -5,5 +5,5 @@ import { createComment } from "../controllers/comment.controller.js";
 const router = express.Router();
 
 router.post(`/create`, verifyToken, createComment);
-router.get("/getcomments", verifyToken, getchComments);
+// router.get("/getcomments", verifyToken, getchComments);
 export default router;

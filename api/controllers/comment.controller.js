@@ -24,5 +24,3 @@ export const createComment = async (req, res, next) => {
     next(error);
   }
 };
-
-export const getchComments = async (req, res, next) => {};
