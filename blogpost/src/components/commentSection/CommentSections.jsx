@@ -1,13 +1,36 @@
 import { Alert, Button, Textarea } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ShowComments from "./ShowComments";
 
 const CommentSections = ({ postId }) => {
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const [commentError, setCommentError] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const res = await fetch(`/api/comment/getcomments/${postId}`);
+
+        if (!res.ok) {
+          const errorData = await res.json();
+          console.log(errorData.message);
+          return;
+        }
+
+        const data = await res.json();
+
+        setComments(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchComments();
+  }, [postId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +55,7 @@ const CommentSections = ({ postId }) => {
       const data = await res.json();
 
       if (res.ok) {
+        setComments((prevComments) => [data, ...prevComments]);
         setComment("");
         setCommentError(null);
       }
@@ -87,7 +111,8 @@ const CommentSections = ({ postId }) => {
           {commentError && <Alert color={"failure"}>{commentError}</Alert>}
         </form>
       )}
-      <ShowComments />
+
+      <ShowComments postId={postId} comments={comments} />
     </div>
   );
 };

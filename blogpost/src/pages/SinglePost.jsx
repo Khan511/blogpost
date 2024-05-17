@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Button, Spinner } from "flowbite-react";
 import CallToAction from "../components/callToAction/CallToAction";
 import CommentSections from "../components/commentSection/CommentSections";
-// 08:07:40
+
 const SinglePost = () => {
   const { postSlug } = useParams();
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,6 @@ const SinglePost = () => {
         if (!res.ok) {
           setError(true);
           setLoading(false);
-          console.log(data.message);
           return;
         }
         if (res.ok) {
