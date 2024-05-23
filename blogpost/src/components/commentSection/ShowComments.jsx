@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import Comment from "../dashboard/comment/Comment";
 
-const ShowComments = ({ postId, comments }) => {
-  console.log(comments);
+const ShowComments = ({ comments, setComments }) => {
+  // console.log(handleLike);
   if (comments.length === 0) {
     return <p>There are no comments yes!</p>;
   }
@@ -19,7 +19,14 @@ const ShowComments = ({ postId, comments }) => {
       <div className="">
         {comments &&
           comments.map((comment) => {
-            return <Comment key={comment._id} comment={comment} />;
+            return (
+              <Comment
+                key={comment._id}
+                comment={comment}
+                setComments={setComments}
+                comments={comments}
+              />
+            );
           })}
       </div>
     </>

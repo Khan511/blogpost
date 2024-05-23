@@ -7,34 +7,40 @@ import CommentSections from "../components/commentSection/CommentSections";
 const SinglePost = () => {
   const { postSlug } = useParams();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      const fetchPost = async () => {
-        const res = await fetch(`/api/post/getposts?slug=${postSlug}`);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const fetchPost = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`/api/post/getposts?slug=${postSlug}`, signal);
 
         const data = await res.json();
 
         if (!res.ok) {
-          setError(true);
+          // setError(true);
           setLoading(false);
           return;
         }
         if (res.ok) {
           setLoading(false);
-          setError(false);
+          // setError(false);
           setPost(data.posts[0]);
         }
-      };
-      fetchPost();
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-      console.log(error.message);
-    }
+      } catch (error) {
+        // setError(true);
+        setLoading(false);
+        console.log(error.message);
+      }
+    };
+    fetchPost();
+
+    return () => {
+      controller.abort();
+    };
   }, [postSlug]);
 
   if (loading)
