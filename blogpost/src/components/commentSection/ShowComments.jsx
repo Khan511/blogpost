@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+// import { useEffect, useMemo, useState } from "react";
 import Comment from "../dashboard/comment/Comment";
 
 const ShowComments = ({ comments, setComments }) => {
-  // console.log(handleLike);
   if (comments.length === 0) {
     return <p>There are no comments yes!</p>;
   }

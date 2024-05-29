@@ -2,7 +2,6 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { ErrorHandler } from "../utils/Error.js";
 import jwt from "jsonwebtoken";
-// import dotenv from "dotenv";
 
 // SingUp Route
 const SignUp = async (req, res, next) => {
