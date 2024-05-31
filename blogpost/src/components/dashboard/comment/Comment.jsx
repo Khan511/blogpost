@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 const Comment = React.memo(({ comment, setComments }) => {
-  console.log(comment);
+  // console.log(comment);
   const { userId } = comment;
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -222,7 +222,7 @@ const Comment = React.memo(({ comment, setComments }) => {
                       )}
                   </div>
 
-                  <p className="text-xs text-yellow-200 ">
+                  <p className="text-xs text-red-400 ">
                     {showComment && commentWarning}
                   </p>
                 </div>

@@ -3,12 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { Button, Spinner } from "flowbite-react";
 import CallToAction from "../components/callToAction/CallToAction";
 import CommentSections from "../components/commentSection/CommentSections";
+import PostCard from "../components/postCard/PostCard";
 
 const SinglePost = () => {
   const { postSlug } = useParams();
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
+  const [first3Posts, setFirst3Posts] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -42,6 +44,33 @@ const SinglePost = () => {
       controller.abort();
     };
   }, [postSlug]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const getFirstThreePosts = async () => {
+      try {
+        const res = await fetch("/api/post/getposts?limit=3", { signal });
+
+        if (res.ok) {
+          const data = await res.json();
+          setFirst3Posts(data.posts);
+        }
+      } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.log(error);
+        }
+      }
+    };
+
+    getFirstThreePosts();
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   if (loading)
     return (
@@ -85,6 +114,13 @@ const SinglePost = () => {
       </div>
       <div className="mx-auto w-full max-w-4xl">
         <CommentSections postId={post._id} />
+      </div>
+      <div className="my-3 flex flex-col justify-center">
+        <h1 className="text-center">Recent Articles</h1>
+        <div className="mt-2 flex w-full flex-wrap justify-center gap-2 md:flex-row">
+          {first3Posts &&
+            first3Posts.map((post) => <PostCard key={post._id} post={post} />)}
+        </div>
       </div>
     </main>
   );

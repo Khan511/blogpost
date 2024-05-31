@@ -106,7 +106,7 @@ export const DashPosts = () => {
                       <Link to={`/post/${post.slug}`}>
                         <img
                           src={post.image}
-                          alt={post.title}
+                          alt={post?.title.slice(0, 15)}
                           className="h-10 w-20 bg-gray-500 object-cover"
                         />
                       </Link>
@@ -116,7 +116,9 @@ export const DashPosts = () => {
                         to={`/post/${post.slug}`}
                         className="font-semibold text-gray-900 dark:text-white"
                       >
-                        {post.title}
+                        {post.title.length > 50
+                          ? post.title.slice(0, 50) + "..."
+                          : post.title}
                       </Link>
                     </Table.Cell>
                     <Table.Cell>{post.category}</Table.Cell>

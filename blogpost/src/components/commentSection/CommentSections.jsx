@@ -10,7 +10,7 @@ const CommentSections = ({ postId }) => {
   const [commentError, setCommentError] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
 
-  console.log("sfefe");
+  // console.log("sfefe");
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
