@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => {
-  console.log(post);
   return (
     <div className="group relative h-[400px] w-full overflow-hidden rounded-lg border border-teal-200 hover:border-2 sm:w-80">
       <Link to={`/post/${post.slug}`}>

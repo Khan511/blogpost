@@ -5,8 +5,8 @@ const CallToAction = () => {
   return (
     <div className=" flex  flex-col  rounded-br-3xl rounded-tl-3xl border-4 border-teal-500 p-4 sm:flex-row">
       <div className=" flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
-        <h2>Want to see my Portfolio webSite?</h2>
-        <p>You can checout the projects i made</p>
+        <h2 className=" ">Want to see my Portfolio webSite?</h2>
+        <p className=" ">You can checout the projects i made</p>
         <Button className="mt-5 w-full rounded-bl-none rounded-br-xl rounded-tl-xl rounded-tr-none">
           <a href="https://portfolio-naji.netlify.app/" target="_blank">
             Want to see My Portfolio?

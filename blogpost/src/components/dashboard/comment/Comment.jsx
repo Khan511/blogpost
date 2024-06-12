@@ -43,9 +43,7 @@ const Comment = React.memo(({ comment, setComments }) => {
 
     getUser(signal);
 
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, [getUser]);
 
   const handleLike = async (commentId) => {
