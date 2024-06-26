@@ -36,6 +36,7 @@ app.use("/api/comment", CommentRoute);
 // For building project to deploy on netlify
 app.use(express.static(path.join(__dirname, "/blogpost/dist")));
 
+// For building project to deploy on netlify
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "blogpost", "dist", "index.html"));
 });
