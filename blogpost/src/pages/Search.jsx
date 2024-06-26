@@ -138,7 +138,7 @@ const Search = () => {
       setLoading(false);
     }
   };
-   console.log(posts.length);
+  console.log(posts.length);
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row   ">
@@ -188,11 +188,11 @@ const Search = () => {
           </div>
         </form>
       </div>
-      <div className="w-full">
-        <h1 className="ml-2 border-b  py-4 text-3xl font-semibold ">
+      <div className="flex w-full flex-col items-center justify-center">
+        <h1 className="ml-2 w-full border-b py-4 text-3xl font-semibold ">
           Search results:
         </h1>
-        <div className="flex flex-wrap justify-center gap-2 p-3">
+        <div className="flex max-w-screen-2xl	flex-wrap justify-center gap-2 p-3 md:mt-10">
           {!loading && posts.length === 0 && (
             <p className="mt-5 text-center text-3xl">No posts available</p>
           )}
@@ -205,7 +205,7 @@ const Search = () => {
         </div>
         <div className=" my-4 flex w-full justify-center">
           {showMore && (
-            <Button  outline  onClick={handleShowMore}>
+            <Button outline onClick={handleShowMore}>
               Show More
             </Button>
           )}
