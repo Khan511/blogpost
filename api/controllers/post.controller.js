@@ -54,7 +54,6 @@ export const getPosts = async (req, res, next) => {
         { content: { $regex: req.query.searchTerm, $options: "i" } },
       ];
     }
-    console.log("Constructed Query:", JSON.stringify(query, null, 2));
 
     const posts = await Post.find(query)
       .sort({ updatedAt: sortDirection })

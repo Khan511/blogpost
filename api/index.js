@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import postRoute from "../api/routes/post.route.js";
 import CommentRoute from "../api/routes/comment.route.js";
 dotenv.config();
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -23,11 +24,21 @@ app.use(cookieParser());
   }
 })();
 
+// For building project to deploy on netlify
+const __dirname = path.resolve();
+
 // Routes
 app.use("/api/post", postRoute);
 app.use("/api/user", UserRoutes);
 app.use("/api/auth", AuthRoutes);
 app.use("/api/comment", CommentRoute);
+
+// For building project to deploy on netlify
+app.use(express.static(path.join(__dirname, "/blogpost/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "blogpost", "dist", "index.html"));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
