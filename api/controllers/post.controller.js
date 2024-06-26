@@ -36,6 +36,7 @@ const create = async (req, res, next) => {
 export default create;
 
 export const getPosts = async (req, res, next) => {
+  console.log("Received Query Parameters:", JSON.stringify(req.query, null, 2));
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
@@ -53,12 +54,17 @@ export const getPosts = async (req, res, next) => {
         { content: { $regex: req.query.searchTerm, $options: "i" } },
       ];
     }
+    console.log("Constructed Query:", JSON.stringify(query, null, 2));
+
     const posts = await Post.find(query)
       .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 
-    const totalPosts = await Post.countDocuments();
+    console.log("Fetched Posts:", posts);
+
+    // const totalPosts = await Post.countDocuments();
+    const totalPosts = await Post.countDocuments(query);
     const now = new Date();
     const oneMothAgo = new Date(
       now.getFullYear(),

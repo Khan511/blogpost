@@ -34,7 +34,6 @@ const Home = () => {
     return () => controler.abort();
   }, []);
 
-  console.log(posts);
   return (
     <div className="min-h-screen">
       <div className=" m-auto  flex max-w-7xl flex-col justify-center p-28 px-3">

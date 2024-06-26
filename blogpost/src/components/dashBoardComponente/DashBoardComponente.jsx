@@ -4,14 +4,7 @@ import { CgArrowUp } from "react-icons/cg";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { LiaComment } from "react-icons/lia";
 import { LuFileText } from "react-icons/lu";
-import {
-  Button,
-  Table,
-  TableBody,
-  TableHead,
-  TableHeadCell,
-  TableRow,
-} from "flowbite-react";
+import { Button, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 const DashBoardComponente = () => {

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// 07:15
+
 export const DashPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -75,7 +75,6 @@ export const DashPosts = () => {
       }
 
       setShowModal(false);
-
       console.log("Post deleted.");
     } catch (error) {}
   };

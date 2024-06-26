@@ -9,7 +9,7 @@ import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// 07:25:50
+
 const UpdatePost = () => {
   const navigate = useNavigate();
   const { postId } = useParams();

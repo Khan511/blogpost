@@ -152,10 +152,10 @@ const CreatePost = () => {
         )}
         <ReactQuill
           theme="snow"
-          placeholder="Write something..."
+          placeholder="Write something......"
           className="mb-12 mt-8 h-72"
-          readOnly={true}
           required
+          // value={formData.content}
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}

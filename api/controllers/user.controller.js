@@ -1,7 +1,7 @@
 import bcryptjs from "bcryptjs";
 import { ErrorHandler } from "../utils/Error.js";
 import User from "../models/user.model.js";
-// 07:32:12
+
 export const Test = (req, res) => {
   res.json({ message: "Api is working!" });
 };
@@ -37,6 +37,7 @@ export const updateUser = async (req, res, next) => {
       );
     }
   }
+
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.userId,
