@@ -83,7 +83,7 @@ const DashComments = () => {
     }
   };
 
-  console.log(comments)
+  console.log(comments);
 
   return (
     <div className="table-auto overflow-x-scroll p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300  dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500 md:mx-auto">
@@ -101,7 +101,7 @@ const DashComments = () => {
             {comments &&
               comments.map((comment) => (
                 <Table.Body className="divide-y" key={comment._id}>
-                  <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                  <Table.Row className=" border bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell>
                       {new Date(comment.updatedAt).toLocaleDateString()}
                     </Table.Cell>
