@@ -72,4 +72,5 @@ export const {
   deleteUserFailure,
   deleteUserSuccess,
 } = userSlice.actions;
+
 export default userSlice.reducer;
